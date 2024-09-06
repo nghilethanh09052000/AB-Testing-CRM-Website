@@ -1,0 +1,48 @@
+export interface ZendeskTicket {
+    url: string;
+    id: number;
+    external_id: string | null;
+    created_at: string;
+    updated_at: string;
+    generated_timestamp: number;
+    type: string | null;
+    subject: string;
+    raw_subject: string;
+    description: string;
+    priority: string | null;
+    status: string;
+    recipient: string | null;
+    requester_id: number;
+    submitter_id: number;
+    assignee_id: number;
+    organization_id: string | null;
+    group_id: number;
+    collaborator_ids: string;
+    follower_ids: string;
+    email_cc_ids: string;
+    forum_topic_id: string | null;
+    problem_id: string | null;
+    has_incidents: boolean;
+    is_public: boolean;
+    due_at: string | null;
+    tags: string;
+    custom_fields: string;
+    satisfaction_rating: string | null;
+    sharing_agreement_ids: string;
+    custom_status_id: number;
+    fields: string;
+    followup_ids: string;
+    ticket_form_id: number;
+    brand_id: number;
+    allow_channelback: boolean;
+    allow_attachments: boolean;
+    from_messaging_channel: boolean;
+    channel: string;
+    assignee_name: string;
+    assignee_email: string;
+    submitter_name: string;
+    submitter_email: string;
+    requester_name: string;
+    requester_email: string;
+  }
+  

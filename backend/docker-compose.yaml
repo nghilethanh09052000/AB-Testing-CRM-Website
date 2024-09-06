@@ -1,0 +1,41 @@
+version: "3.9"
+
+services:
+  ab-testing-django-app:
+    depends_on:
+      - ab-testing-postgres-db
+    build:
+      context: .
+      args:
+        - DEV=true
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/app
+    command: >
+      sh -c " python manage.py migrate &&
+              python manage.py runserver 0.0.0.0:8000"
+    environment:
+      - POSTGRESQL_DB_HOST=ab-testing-postgres-db
+      - POSTGRESQL_DB_NAME=devdb
+      - POSTGRESQL_DB_USER=devuser
+      - POSTGRESQL_DB_PASS=abcABC@123
+      - SERVICE_ACCOUNT_JSON_PATH=data-platform-387707-testing.json
+      - BIGQUERY_PROJECT=sipher-data-testing
+      - BIGQUERY_BILLING_PROJECT=data-platform-387707
+
+  ab-testing-postgres-db:
+    image: postgres:13-alpine
+    volumes:
+      - dev-db-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=devdb
+      - POSTGRES_USER=devuser
+      - POSTGRES_PASSWORD=abcABC@123
+
+
+volumes:
+  dev-db-data:
+  dev-static-data:

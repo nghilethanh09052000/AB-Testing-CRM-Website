@@ -1,0 +1,6 @@
+snapshot_sipher_prod_UserPool_1720580720770[flake8]
+exclude = 
+    migration,
+    __pycache__,
+    manage.py
+    settings.py
